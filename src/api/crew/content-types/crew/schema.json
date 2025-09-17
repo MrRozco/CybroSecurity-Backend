@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "crews",
+  "info": {
+    "singularName": "crew",
+    "pluralName": "crews",
+    "displayName": "crew"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "structure.crew-header",
+        "structure.crew-members"
+      ]
+    }
+  }
+}

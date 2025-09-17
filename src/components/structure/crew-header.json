@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_structure_crew_headers",
+  "info": {
+    "displayName": "crew header"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

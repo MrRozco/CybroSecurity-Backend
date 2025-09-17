@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_structure_category_feeds",
+  "info": {
+    "displayName": "category feed"
+  },
+  "options": {},
+  "attributes": {
+    "topTitle": {
+      "type": "string"
+    },
+    "topBlogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    }
+  },
+  "config": {}
+}

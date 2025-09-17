@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_structure_main_headers",
+  "info": {
+    "displayName": "main header"
+  },
+  "options": {},
+  "attributes": {
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_structure_social_medias",
+  "info": {
+    "displayName": "social medias"
+  },
+  "options": {},
+  "attributes": {
+    "mediaLogo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mediaLink": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
