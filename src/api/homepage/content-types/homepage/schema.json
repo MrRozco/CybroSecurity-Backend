@@ -26,8 +26,13 @@
         "structure.main-header",
         "structure.navbar",
         "structure.category-feed",
-        "structure.footer"
+        "structure.footer",
+        "structure.social-media-section"
       ]
+    },
+    "oembed": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
     }
   }
 }

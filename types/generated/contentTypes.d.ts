@@ -524,6 +524,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'structure.navbar',
         'structure.category-feed',
         'structure.footer',
+        'structure.social-media-section',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -536,6 +537,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'api::homepage.homepage'
     > &
       Schema.Attribute.Private;
+    oembed: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

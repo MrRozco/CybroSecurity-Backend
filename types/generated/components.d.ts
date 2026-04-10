@@ -111,6 +111,19 @@ export interface StructureNavbar extends Struct.ComponentSchema {
   };
 }
 
+export interface StructureSocialMediaSection extends Struct.ComponentSchema {
+  collectionName: 'components_structure_social_media_sections';
+  info: {
+    displayName: 'Social Media Section';
+  };
+  attributes: {
+    embed: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    summary: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface StructureSocialMedias extends Struct.ComponentSchema {
   collectionName: 'components_structure_social_medias';
   info: {
@@ -134,6 +147,7 @@ declare module '@strapi/strapi' {
       'structure.link': StructureLink;
       'structure.main-header': StructureMainHeader;
       'structure.navbar': StructureNavbar;
+      'structure.social-media-section': StructureSocialMediaSection;
       'structure.social-medias': StructureSocialMedias;
     }
   }
