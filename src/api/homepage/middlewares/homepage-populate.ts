@@ -35,6 +35,9 @@ const populate = {
       },
       'structure.social-media-section': {
         populate: '*'
+      },
+      'structure.excerpt-section': {
+        populate: '*'
       }
     },
   },

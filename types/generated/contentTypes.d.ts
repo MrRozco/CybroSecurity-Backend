@@ -525,6 +525,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
         'structure.category-feed',
         'structure.footer',
         'structure.social-media-section',
+        'structure.excerpt-section',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

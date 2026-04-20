@@ -17,6 +17,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::category.category"
+    },
+    "color": {
+      "type": "string"
     }
   },
   "config": {}

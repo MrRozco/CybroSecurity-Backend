@@ -27,7 +27,8 @@
         "structure.navbar",
         "structure.category-feed",
         "structure.footer",
-        "structure.social-media-section"
+        "structure.social-media-section",
+        "structure.excerpt-section"
       ]
     },
     "oembed": {

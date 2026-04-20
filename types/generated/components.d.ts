@@ -7,6 +7,7 @@ export interface StructureCategoryFeed extends Struct.ComponentSchema {
   };
   attributes: {
     category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    color: Schema.Attribute.String;
     topBlogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
     topTitle: Schema.Attribute.String;
   };
@@ -49,6 +50,18 @@ export interface StructureEmployee extends Struct.ComponentSchema {
     name: Schema.Attribute.String;
     profile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface StructureExcerptSection extends Struct.ComponentSchema {
+  collectionName: 'components_structure_excerpt_sections';
+  info: {
+    displayName: 'Excerpt Section';
+  };
+  attributes: {
+    summary: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -142,6 +155,7 @@ declare module '@strapi/strapi' {
       'structure.crew-header': StructureCrewHeader;
       'structure.crew-members': StructureCrewMembers;
       'structure.employee': StructureEmployee;
+      'structure.excerpt-section': StructureExcerptSection;
       'structure.footer': StructureFooter;
       'structure.hamburger-links': StructureHamburgerLinks;
       'structure.link': StructureLink;

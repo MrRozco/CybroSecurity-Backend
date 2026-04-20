@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_structure_excerpt_sections",
+  "info": {
+    "displayName": "Excerpt Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
