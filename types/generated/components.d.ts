@@ -49,6 +49,7 @@ export interface StructureEmployee extends Struct.ComponentSchema {
       >;
     name: Schema.Attribute.String;
     profile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    socials: Schema.Attribute.Component<'structure.social-medias', true>;
     title: Schema.Attribute.String;
   };
 }

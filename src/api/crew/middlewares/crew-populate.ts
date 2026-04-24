@@ -13,7 +13,14 @@ const populate = {
       'structure.crew-members': {
         populate: {
           employee: {
-            populate: '*',
+            populate: {
+              profile: true,
+              socials: {
+                populate: {
+                  mediaLogo: true,
+                },
+              },
+            },
           },
         },
       },

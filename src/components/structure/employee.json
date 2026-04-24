@@ -27,6 +27,11 @@
       "options": {
         "preset": "defaultHtml"
       }
+    },
+    "socials": {
+      "type": "component",
+      "component": "structure.social-medias",
+      "repeatable": true
     }
   },
   "config": {}
