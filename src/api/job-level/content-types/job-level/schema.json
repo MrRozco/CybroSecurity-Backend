@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_levels",
+  "info": {
+    "singularName": "job-level",
+    "pluralName": "job-levels",
+    "displayName": "JobLevel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "level": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "level"
+    },
+    "description": {
+      "type": "text"
+    },
+    "job_postings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job-posting.job-posting",
+      "mappedBy": "job_level"
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "homepages",
+  "collectionName": "gigss",
   "info": {
-    "singularName": "homepage",
-    "pluralName": "homepages",
-    "displayName": "homepage"
+    "singularName": "gigs",
+    "pluralName": "gigss",
+    "displayName": "gigs"
   },
   "options": {
     "draftAndPublish": true
@@ -23,12 +23,7 @@
     "content": {
       "type": "dynamiczone",
       "components": [
-        "structure.main-header",
-        "structure.navbar",
-        "structure.category-feed",
-        "structure.footer",
-        "structure.social-media-section",
-        "structure.excerpt-section"
+        "structure.job-postings"
       ]
     }
   }

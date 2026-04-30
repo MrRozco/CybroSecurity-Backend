@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_postings",
+  "info": {
+    "singularName": "job-posting",
+    "pluralName": "job-postings",
+    "displayName": "JobPosting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "job_level": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job-level.job-level",
+      "inversedBy": "job_postings"
+    },
+    "job_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job-category.job-category",
+      "inversedBy": "job_postings"
+    },
+    "description": {
+      "type": "text"
+    },
+    "posted": {
+      "type": "date"
+    }
+  }
+}

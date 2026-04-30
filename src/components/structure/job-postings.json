@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_structure_job_postings",
+  "info": {
+    "displayName": "jobItems"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "job_postings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job-posting.job-posting"
+    }
+  },
+  "config": {}
+}

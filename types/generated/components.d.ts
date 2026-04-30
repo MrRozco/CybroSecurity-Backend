@@ -89,6 +89,21 @@ export interface StructureHamburgerLinks extends Struct.ComponentSchema {
   };
 }
 
+export interface StructureJobPostings extends Struct.ComponentSchema {
+  collectionName: 'components_structure_job_postings';
+  info: {
+    displayName: 'jobItems';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    job_postings: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-posting.job-posting'
+    >;
+    Title: Schema.Attribute.String;
+  };
+}
+
 export interface StructureLink extends Struct.ComponentSchema {
   collectionName: 'components_structure_links';
   info: {
@@ -159,6 +174,7 @@ declare module '@strapi/strapi' {
       'structure.excerpt-section': StructureExcerptSection;
       'structure.footer': StructureFooter;
       'structure.hamburger-links': StructureHamburgerLinks;
+      'structure.job-postings': StructureJobPostings;
       'structure.link': StructureLink;
       'structure.main-header': StructureMainHeader;
       'structure.navbar': StructureNavbar;

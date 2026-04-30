@@ -507,6 +507,34 @@ export interface ApiCrewCrew extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiGigsGigs extends Struct.SingleTypeSchema {
+  collectionName: 'gigss';
+  info: {
+    displayName: 'gigs';
+    pluralName: 'gigss';
+    singularName: 'gigs';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.DynamicZone<['structure.job-postings']>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::gigs.gigs'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -538,8 +566,114 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'api::homepage.homepage'
     > &
       Schema.Attribute.Private;
-    oembed: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiJobCategoryJobCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'job_categories';
+  info: {
+    displayName: 'JobCategory';
+    pluralName: 'job-categories';
+    singularName: 'job-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    job_postings: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-posting.job-posting'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-category.job-category'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiJobLevelJobLevel extends Struct.CollectionTypeSchema {
+  collectionName: 'job_levels';
+  info: {
+    displayName: 'JobLevel';
+    pluralName: 'job-levels';
+    singularName: 'job-level';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    job_postings: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-posting.job-posting'
+    >;
+    level: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-level.job-level'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'level'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiJobPostingJobPosting extends Struct.CollectionTypeSchema {
+  collectionName: 'job_postings';
+  info: {
+    displayName: 'JobPosting';
+    pluralName: 'job-postings';
+    singularName: 'job-posting';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    job_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::job-category.job-category'
+    >;
+    job_level: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::job-level.job-level'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-posting.job-posting'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    posted: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1089,7 +1223,11 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
       'api::crew.crew': ApiCrewCrew;
+      'api::gigs.gigs': ApiGigsGigs;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::job-category.job-category': ApiJobCategoryJobCategory;
+      'api::job-level.job-level': ApiJobLevelJobLevel;
+      'api::job-posting.job-posting': ApiJobPostingJobPosting;
       'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
