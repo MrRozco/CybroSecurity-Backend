@@ -60,6 +60,7 @@ export interface StructureExcerptSection extends Struct.ComponentSchema {
     displayName: 'Excerpt Section';
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     summary: Schema.Attribute.Text;
     title: Schema.Attribute.String;
     url: Schema.Attribute.String;
@@ -146,6 +147,7 @@ export interface StructureSocialMediaSection extends Struct.ComponentSchema {
     displayName: 'Social Media Section';
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     embed: Schema.Attribute.JSON &
       Schema.Attribute.CustomField<'plugin::oembed.oembed'>;
     summary: Schema.Attribute.Text;

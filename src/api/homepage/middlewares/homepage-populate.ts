@@ -34,10 +34,14 @@ const populate = {
         },
       },
       'structure.social-media-section': {
-        populate: '*'
+        populate: {
+          author: true,
+        }
       },
       'structure.excerpt-section': {
-        populate: '*'
+        populate: {
+          author: true,
+        }
       }
     },
   },
@@ -47,9 +51,17 @@ export default (_config, { strapi }: { strapi: Core.Strapi }) => {
   return async (ctx, next) => {
     strapi.log.debug('Applying homepage populate middleware');
 
+    const incomingPopulate = ctx.query?.populate;
+    const hasEmptyPopulateObject =
+      incomingPopulate &&
+      typeof incomingPopulate === 'object' &&
+      !Array.isArray(incomingPopulate) &&
+      Object.keys(incomingPopulate).length === 0;
+    const shouldApplyDefaultPopulate = !incomingPopulate || hasEmptyPopulateObject;
+
     ctx.query = {
       ...ctx.query,
-      populate: ctx.query?.populate ?? populate,
+      populate: shouldApplyDefaultPopulate ? populate : incomingPopulate,
     };
 
     await next();
