@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "global",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global Settings",
+    "description": "Site-wide settings: navigation, footer, branding, and default SEO"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "required": true
+    },
+    "siteDescription": {
+      "type": "text"
+    },
+    "siteLogo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "navbar": {
+      "type": "component",
+      "component": "structure.navbar",
+      "repeatable": false
+    },
+    "footer": {
+      "type": "component",
+      "component": "structure.footer",
+      "repeatable": false
+    },
+    "defaultSeo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    }
+  }
+}

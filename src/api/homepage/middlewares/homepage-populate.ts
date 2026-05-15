@@ -1,48 +1,41 @@
-/**
- * `homepage-populate` middleware
- */
-
 import type { Core } from '@strapi/strapi';
 
 const populate = {
+  seo: {
+    populate: {
+      ogImage: { fields: ['url', 'alternativeText'] },
+    },
+  },
   content: {
     on: {
-      'structure.navbar': {
-        populate: '*',
-      },
       'structure.main-header': {
         populate: {
           blogs: {
-            populate: '*',
+            fields: ['Title', 'Slug', 'Excerpt'],
+            populate: {
+              FeaturedImage: { fields: ['url', 'alternativeText', 'formats'] },
+              author: { fields: ['Name'] },
+              category: { fields: ['Name', 'Slug'] },
+            },
           },
         },
       },
       'structure.category-feed': {
-        populate: '*',
-      },
-      'structure.footer': {
         populate: {
-          socialMedias: {
-            populate: '*',
-          },
-          links: {
-            populate: '*',
-          },
-          logo: {
-            populate: '*',
-          },
+          category: { fields: ['Name', 'Slug', 'color'] },
+          topBlogs: { fields: ['Title', 'Slug', 'Excerpt'] },
         },
       },
       'structure.social-media-section': {
         populate: {
-          author: true,
-        }
+          author: { fields: ['Name', 'Email'] },
+        },
       },
       'structure.excerpt-section': {
         populate: {
-          author: true,
-        }
-      }
+          author: { fields: ['Name', 'Email'] },
+        },
+      },
     },
   },
 };

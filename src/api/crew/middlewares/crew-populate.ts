@@ -1,25 +1,15 @@
-/**
- * `crew-populate` middleware
- */
-
 import type { Core } from '@strapi/strapi';
 
 const populate = {
-  content: {
-    on: {
-      'structure.crew-header': {
-        populate: '*',
-      },
-      'structure.crew-members': {
+  header: true,
+  members: {
+    populate: {
+      employee: {
         populate: {
-          employee: {
+          profile: { fields: ['url', 'alternativeText', 'formats'] },
+          socials: {
             populate: {
-              profile: true,
-              socials: {
-                populate: {
-                  mediaLogo: true,
-                },
-              },
+              mediaLogo: { fields: ['url', 'alternativeText'] },
             },
           },
         },

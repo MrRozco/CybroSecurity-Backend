@@ -4,28 +4,23 @@
   "info": {
     "singularName": "crew",
     "pluralName": "crews",
-    "displayName": "crew"
+    "displayName": "Crew Page",
+    "description": "Team / about page layout"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
+    "header": {
+      "type": "component",
+      "component": "structure.crew-header",
+      "repeatable": false
     },
-    "description": {
-      "type": "text"
-    },
-    "url": {
-      "type": "string"
-    },
-    "content": {
-      "type": "dynamiczone",
-      "components": [
-        "structure.crew-header",
-        "structure.crew-members"
-      ]
+    "members": {
+      "type": "component",
+      "component": "structure.crew-members",
+      "repeatable": false
     }
   }
 }
