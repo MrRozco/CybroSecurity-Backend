@@ -1,8 +1,8 @@
-/**
- * `category-populate` middleware
- */
-
 import type { Core } from '@strapi/strapi';
+
+const populate = {
+  image: { fields: ['url', 'alternativeText', 'formats'] },
+};
 
 export default (_config, { strapi }: { strapi: Core.Strapi }) => {
   return async (ctx, next) => {
@@ -10,7 +10,7 @@ export default (_config, { strapi }: { strapi: Core.Strapi }) => {
 
     ctx.query = {
       ...ctx.query,
-      populate: ctx.query?.populate ?? '*',
+      populate: ctx.query?.populate ?? populate,
     };
 
     await next();

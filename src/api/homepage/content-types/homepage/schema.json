@@ -4,29 +4,24 @@
   "info": {
     "singularName": "homepage",
     "pluralName": "homepages",
-    "displayName": "homepage"
+    "displayName": "Home Page",
+    "description": "Homepage layout and page builder sections"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
-    },
-    "url": {
-      "type": "string"
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
     },
     "content": {
       "type": "dynamiczone",
       "components": [
         "structure.main-header",
-        "structure.navbar",
         "structure.category-feed",
-        "structure.footer",
         "structure.social-media-section",
         "structure.excerpt-section"
       ]

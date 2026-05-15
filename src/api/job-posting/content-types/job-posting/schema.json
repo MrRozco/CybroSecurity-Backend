@@ -4,7 +4,8 @@
   "info": {
     "singularName": "job-posting",
     "pluralName": "job-postings",
-    "displayName": "JobPosting"
+    "displayName": "Job Posting",
+    "description": "Individual job listings"
   },
   "options": {
     "draftAndPublish": true
@@ -12,16 +13,14 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "logo": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "url": {

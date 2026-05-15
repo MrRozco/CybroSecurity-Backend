@@ -1,9 +1,31 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SharedSeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seos';
+  info: {
+    displayName: 'SEO Metadata';
+  };
+  attributes: {
+    canonicalURL: Schema.Attribute.String;
+    keywords: Schema.Attribute.Text;
+    metaDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 160;
+      }>;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    ogImage: Schema.Attribute.Media<'images'>;
+    preventIndexing: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+  };
+}
+
 export interface StructureCategoryFeed extends Struct.ComponentSchema {
   collectionName: 'components_structure_category_feeds';
   info: {
-    displayName: 'category feed';
+    displayName: 'Category Feed';
   };
   attributes: {
     category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
@@ -16,7 +38,7 @@ export interface StructureCategoryFeed extends Struct.ComponentSchema {
 export interface StructureCrewHeader extends Struct.ComponentSchema {
   collectionName: 'components_structure_crew_headers';
   info: {
-    displayName: 'crew header';
+    displayName: 'Crew Header';
   };
   attributes: {
     description: Schema.Attribute.Text;
@@ -27,7 +49,7 @@ export interface StructureCrewHeader extends Struct.ComponentSchema {
 export interface StructureCrewMembers extends Struct.ComponentSchema {
   collectionName: 'components_structure_crew_members';
   info: {
-    displayName: 'crew members';
+    displayName: 'Crew Members';
   };
   attributes: {
     employee: Schema.Attribute.Component<'structure.employee', true>;
@@ -82,7 +104,7 @@ export interface StructureFooter extends Struct.ComponentSchema {
 export interface StructureHamburgerLinks extends Struct.ComponentSchema {
   collectionName: 'components_structure_hamburger_links';
   info: {
-    displayName: 'hamburgerLinks';
+    displayName: 'Mobile Nav Link';
   };
   attributes: {
     text: Schema.Attribute.String;
@@ -93,7 +115,7 @@ export interface StructureHamburgerLinks extends Struct.ComponentSchema {
 export interface StructureJobPostings extends Struct.ComponentSchema {
   collectionName: 'components_structure_job_postings';
   info: {
-    displayName: 'jobItems';
+    displayName: 'Job Listings Section';
   };
   attributes: {
     description: Schema.Attribute.Text;
@@ -119,7 +141,7 @@ export interface StructureLink extends Struct.ComponentSchema {
 export interface StructureMainHeader extends Struct.ComponentSchema {
   collectionName: 'components_structure_main_headers';
   info: {
-    displayName: 'main header';
+    displayName: 'Main Header';
   };
   attributes: {
     blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
@@ -158,7 +180,7 @@ export interface StructureSocialMediaSection extends Struct.ComponentSchema {
 export interface StructureSocialMedias extends Struct.ComponentSchema {
   collectionName: 'components_structure_social_medias';
   info: {
-    displayName: 'social medias';
+    displayName: 'Social Media Link';
   };
   attributes: {
     mediaLink: Schema.Attribute.String;
@@ -169,6 +191,7 @@ export interface StructureSocialMedias extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.seo': SharedSeo;
       'structure.category-feed': StructureCategoryFeed;
       'structure.crew-header': StructureCrewHeader;
       'structure.crew-members': StructureCrewMembers;

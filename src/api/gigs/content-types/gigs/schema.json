@@ -4,27 +4,30 @@
   "info": {
     "singularName": "gigs",
     "pluralName": "gigss",
-    "displayName": "gigs"
+    "displayName": "Gigs Page",
+    "description": "Jobs / gigs page layout"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "pageTitle": {
       "type": "string"
     },
-    "description": {
+    "pageDescription": {
       "type": "text"
     },
-    "url": {
+    "sectionTitle": {
       "type": "string"
     },
-    "content": {
-      "type": "dynamiczone",
-      "components": [
-        "structure.job-postings"
-      ]
+    "sectionDescription": {
+      "type": "text"
+    },
+    "job_postings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job-posting.job-posting"
     }
   }
 }

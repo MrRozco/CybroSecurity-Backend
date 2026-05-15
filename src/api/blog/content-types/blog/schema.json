@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "Blog"
+    "displayName": "Article",
+    "description": "News articles and editorial content"
   },
   "options": {
     "draftAndPublish": true
@@ -12,27 +13,34 @@
   "pluginOptions": {},
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Slug": {
       "type": "uid",
-      "targetField": "Title"
+      "targetField": "Title",
+      "required": true
     },
     "Excerpt": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 300
     },
     "FeaturedImage": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "PublishedDate": {
       "type": "date"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "readingTime": {
+      "type": "integer"
     },
     "category": {
       "type": "relation",
@@ -51,6 +59,11 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "inversedBy": "blogs"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
     },
     "Content": {
       "type": "customField",

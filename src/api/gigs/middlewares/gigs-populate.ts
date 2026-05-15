@@ -1,30 +1,12 @@
-/**
- * `gigs-populate` middleware
- */
-
 import type { Core } from '@strapi/strapi';
 
 const populate = {
-  content: {
-    on: {
-      'structure.job-postings': {
-        populate: {
-          job_postings: {
-            fields: ['title', 'description', 'posted', 'url', 'documentId', 'createdAt', 'updatedAt', 'publishedAt'],
-            populate: {
-              logo: {
-                populate: '*',
-              },
-              job_level: {
-                populate: '*',
-              },
-              job_category: {
-                populate: '*',
-              },
-            },
-          },
-        },
-      },
+  job_postings: {
+    fields: ['title', 'description', 'posted', 'url', 'documentId'],
+    populate: {
+      logo: { fields: ['url', 'alternativeText'] },
+      job_level: { fields: ['level', 'slug'] },
+      job_category: { fields: ['name', 'slug'] },
     },
   },
 };
