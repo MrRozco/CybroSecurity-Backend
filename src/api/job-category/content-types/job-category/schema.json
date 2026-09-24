@@ -4,7 +4,7 @@
   "info": {
     "singularName": "job-category",
     "pluralName": "job-categories",
-    "displayName": "JobCategory"
+    "displayName": "Job Category"
   },
   "options": {
     "draftAndPublish": true
