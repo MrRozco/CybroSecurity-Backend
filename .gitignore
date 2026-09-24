@@ -129,3 +129,13 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+############################
+# WordPress migration (sensitive: export contains admin users + hashes)
+############################
+
+strapi-export/
+migration/snapshot/
+migration/.env
+*.tar.gz
+backups/

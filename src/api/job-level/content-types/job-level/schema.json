@@ -4,7 +4,7 @@
   "info": {
     "singularName": "job-level",
     "pluralName": "job-levels",
-    "displayName": "JobLevel"
+    "displayName": "Job Level"
   },
   "options": {
     "draftAndPublish": true
