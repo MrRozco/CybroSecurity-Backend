@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_social_media_sections",
   "info": {
-    "displayName": "Social Media Section"
+    "displayName": "Social Media Section",
+    "icon": "cast",
+    "description": "Embeds a social post (e.g. LinkedIn) with a title, summary and author."
   },
   "options": {},
   "attributes": {

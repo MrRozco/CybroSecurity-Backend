@@ -1,7 +1,9 @@
 {
   "collectionName": "components_shared_seos",
   "info": {
-    "displayName": "SEO Metadata"
+    "displayName": "SEO Metadata",
+    "icon": "search",
+    "description": "How this page appears in Google and when shared on social media."
   },
   "options": {},
   "attributes": {

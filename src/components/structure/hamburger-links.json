@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_hamburger_links",
   "info": {
-    "displayName": "Mobile Nav Link"
+    "displayName": "Mobile Nav Link",
+    "icon": "link",
+    "description": "A link shown in the mobile (hamburger) menu."
   },
   "options": {},
   "attributes": {

@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_category_feeds",
   "info": {
-    "displayName": "Category Feed"
+    "displayName": "Category Feed",
+    "icon": "bulletList",
+    "description": "Latest articles from one category, plus an optional sidebar of hand-picked articles."
   },
   "options": {},
   "attributes": {

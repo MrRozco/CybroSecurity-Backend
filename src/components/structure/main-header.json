@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_main_headers",
   "info": {
-    "displayName": "Main Header"
+    "displayName": "Main Header",
+    "icon": "star",
+    "description": "Top of the homepage: the first article is the big lead story, the rest are listed beside it."
   },
   "options": {},
   "attributes": {

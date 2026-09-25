@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_navbars",
   "info": {
-    "displayName": "navbar"
+    "displayName": "Navigation Bar",
+    "icon": "grid",
+    "description": "Site header: logo, main links and the mobile menu links."
   },
   "options": {},
   "attributes": {

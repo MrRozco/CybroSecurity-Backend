@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_job_postings",
   "info": {
-    "displayName": "Job Listings Section"
+    "displayName": "Job Listings Section",
+    "icon": "briefcase",
+    "description": "A heading, intro text and a hand-picked list of job postings."
   },
   "options": {},
   "attributes": {

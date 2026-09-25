@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_links",
   "info": {
-    "displayName": "link"
+    "displayName": "Link",
+    "icon": "link",
+    "description": "A text link to a page or URL."
   },
   "options": {},
   "attributes": {
