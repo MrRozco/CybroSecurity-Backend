@@ -9,4 +9,6 @@ export default [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
+  // Admin relation dropdowns: newest articles / job postings first.
+  'global::relation-picker-sort',
 ];

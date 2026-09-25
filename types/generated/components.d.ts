@@ -161,12 +161,16 @@ export interface StructureLink extends Struct.ComponentSchema {
 export interface StructureMainHeader extends Struct.ComponentSchema {
   collectionName: 'components_structure_main_headers';
   info: {
-    description: 'Top of the homepage: the first article is the big lead story, the rest are listed beside it.';
+    description: 'Top of the homepage: one big main article, with supporting articles listed beside it.';
     displayName: 'Main Header';
     icon: 'star';
   };
   attributes: {
     blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
+    mainArticle: Schema.Attribute.Relation<'oneToOne', 'api::blog.blog'>;
+    sideArticles: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
+    sideTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Top Stories'>;
   };
 }
 

@@ -3,10 +3,24 @@
   "info": {
     "displayName": "Main Header",
     "icon": "star",
-    "description": "Top of the homepage: the first article is the big lead story, the rest are listed beside it."
+    "description": "Top of the homepage: one big main article, with supporting articles listed beside it."
   },
   "options": {},
   "attributes": {
+    "mainArticle": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog.blog"
+    },
+    "sideTitle": {
+      "type": "string",
+      "default": "Top Stories"
+    },
+    "sideArticles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
+    },
     "blogs": {
       "type": "relation",
       "relation": "oneToMany",
