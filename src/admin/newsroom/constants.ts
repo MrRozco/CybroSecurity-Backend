@@ -15,18 +15,32 @@ export const UID = {
 
 export type ContentTypeUID = (typeof UID)[keyof typeof UID];
 
+/** Single types (pages + site-wide settings). */
+export const SINGLE_UID = {
+  homepage: 'api::homepage.homepage',
+  crew: 'api::crew.crew',
+  gigs: 'api::gigs.gigs',
+  global: 'api::global.global',
+} as const;
+
+export type SingleTypeUID = (typeof SINGLE_UID)[keyof typeof SINGLE_UID];
+
 /** Top-level routes registered in the main left navigation. */
 export const SECTION = {
   articles: 'newsroom-articles',
   categories: 'newsroom-categories',
   jobs: 'newsroom-jobs',
+  pages: 'newsroom-pages',
   admin: 'newsroom-admin',
 } as const;
+
+/** Public website, used for "View on site" links. Override with STRAPI_ADMIN_SITE_URL. */
+export const SITE_URL = (process.env.STRAPI_ADMIN_SITE_URL || 'https://www.cybrosecurity.com').replace(/\/+$/, '');
 
 /** Publication status filter values understood by the Content Manager API. */
 export type StatusFilter = 'draft' | 'published' | 'published-modified';
 
-export const readPermission = (subject: ContentTypeUID) => ({
+export const readPermission = (subject: ContentTypeUID | SingleTypeUID) => ({
   action: 'plugin::content-manager.explorer.read',
   subject,
 });

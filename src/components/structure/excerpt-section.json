@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_excerpt_sections",
   "info": {
-    "displayName": "Excerpt Section"
+    "displayName": "Excerpt Section",
+    "icon": "quote",
+    "description": "Highlights an external link with a title, short summary and author."
   },
   "options": {},
   "attributes": {

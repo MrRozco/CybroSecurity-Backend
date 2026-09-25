@@ -1,9 +1,9 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
-import { Briefcase, ChartPie, Clock, File, Folder, Pencil, Shield } from '@strapi/icons';
+import { Briefcase, ChartPie, Clock, Earth, File, Folder, Layout, Pencil, Shield } from '@strapi/icons';
 
 import logo from './extensions/cybro-logo.png';
 import { theme } from './theme';
-import { SECTION, UID, readPermission } from './newsroom/constants';
+import { SECTION, SINGLE_UID, UID, readPermission } from './newsroom/constants';
 
 export default {
   config: {
@@ -45,6 +45,28 @@ export default {
       permissions: [readPermission(UID.jobPosting)],
       position: 0.3,
       Component: () => import('./newsroom/pages/JobsPage'),
+    });
+
+    app.addMenuLink({
+      to: SECTION.pages,
+      icon: Layout,
+      intlLabel: { id: 'newsroom.menu.pages', defaultMessage: 'Pages' },
+      permissions: [
+        readPermission(SINGLE_UID.homepage),
+        readPermission(SINGLE_UID.crew),
+        readPermission(SINGLE_UID.gigs),
+      ],
+      position: 0.4,
+      Component: () => import('./newsroom/pages/PagesPage'),
+    });
+
+    // Opens the Global Settings single type directly in the editor.
+    app.addMenuLink({
+      to: `content-manager/single-types/${SINGLE_UID.global}`,
+      icon: Earth,
+      intlLabel: { id: 'newsroom.menu.global', defaultMessage: 'Global Settings' },
+      permissions: [readPermission(SINGLE_UID.global)],
+      position: 0.5,
     });
 
     app.addMenuLink({

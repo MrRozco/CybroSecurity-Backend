@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_crew_headers",
   "info": {
-    "displayName": "Crew Header"
+    "displayName": "Crew Header",
+    "icon": "layout",
+    "description": "Title and intro text at the top of the Crew page."
   },
   "options": {},
   "attributes": {

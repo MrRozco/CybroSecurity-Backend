@@ -692,7 +692,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
 export interface ApiJobCategoryJobCategory extends Struct.CollectionTypeSchema {
   collectionName: 'job_categories';
   info: {
-    displayName: 'JobCategory';
+    displayName: 'Job Category';
     pluralName: 'job-categories';
     singularName: 'job-category';
   };
@@ -726,7 +726,7 @@ export interface ApiJobCategoryJobCategory extends Struct.CollectionTypeSchema {
 export interface ApiJobLevelJobLevel extends Struct.CollectionTypeSchema {
   collectionName: 'job_levels';
   info: {
-    displayName: 'JobLevel';
+    displayName: 'Job Level';
     pluralName: 'job-levels';
     singularName: 'job-level';
   };

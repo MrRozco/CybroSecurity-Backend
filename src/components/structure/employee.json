@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_employees",
   "info": {
-    "displayName": "employee"
+    "displayName": "Team Member",
+    "icon": "user",
+    "description": "One person on the team: photo, name, job title, bio and social links."
   },
   "options": {},
   "attributes": {

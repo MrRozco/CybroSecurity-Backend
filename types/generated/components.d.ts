@@ -3,7 +3,9 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
+    description: 'How this page appears in Google and when shared on social media.';
     displayName: 'SEO Metadata';
+    icon: 'search';
   };
   attributes: {
     canonicalURL: Schema.Attribute.String;
@@ -25,7 +27,9 @@ export interface SharedSeo extends Struct.ComponentSchema {
 export interface StructureCategoryFeed extends Struct.ComponentSchema {
   collectionName: 'components_structure_category_feeds';
   info: {
+    description: 'Latest articles from one category, plus an optional sidebar of hand-picked articles.';
     displayName: 'Category Feed';
+    icon: 'bulletList';
   };
   attributes: {
     category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
@@ -38,7 +42,9 @@ export interface StructureCategoryFeed extends Struct.ComponentSchema {
 export interface StructureCrewHeader extends Struct.ComponentSchema {
   collectionName: 'components_structure_crew_headers';
   info: {
+    description: 'Title and intro text at the top of the Crew page.';
     displayName: 'Crew Header';
+    icon: 'layout';
   };
   attributes: {
     description: Schema.Attribute.Text;
@@ -49,7 +55,9 @@ export interface StructureCrewHeader extends Struct.ComponentSchema {
 export interface StructureCrewMembers extends Struct.ComponentSchema {
   collectionName: 'components_structure_crew_members';
   info: {
+    description: 'The list of team members shown on the Crew page.';
     displayName: 'Crew Members';
+    icon: 'user';
   };
   attributes: {
     employee: Schema.Attribute.Component<'structure.employee', true>;
@@ -59,7 +67,9 @@ export interface StructureCrewMembers extends Struct.ComponentSchema {
 export interface StructureEmployee extends Struct.ComponentSchema {
   collectionName: 'components_structure_employees';
   info: {
-    displayName: 'employee';
+    description: 'One person on the team: photo, name, job title, bio and social links.';
+    displayName: 'Team Member';
+    icon: 'user';
   };
   attributes: {
     bio: Schema.Attribute.RichText &
@@ -79,7 +89,9 @@ export interface StructureEmployee extends Struct.ComponentSchema {
 export interface StructureExcerptSection extends Struct.ComponentSchema {
   collectionName: 'components_structure_excerpt_sections';
   info: {
+    description: 'Highlights an external link with a title, short summary and author.';
     displayName: 'Excerpt Section';
+    icon: 'quote';
   };
   attributes: {
     author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
@@ -92,7 +104,9 @@ export interface StructureExcerptSection extends Struct.ComponentSchema {
 export interface StructureFooter extends Struct.ComponentSchema {
   collectionName: 'components_structure_footers';
   info: {
-    displayName: 'footer';
+    description: 'Site footer: logo, links and social media icons.';
+    displayName: 'Footer';
+    icon: 'layout';
   };
   attributes: {
     links: Schema.Attribute.Component<'structure.link', true>;
@@ -104,7 +118,9 @@ export interface StructureFooter extends Struct.ComponentSchema {
 export interface StructureHamburgerLinks extends Struct.ComponentSchema {
   collectionName: 'components_structure_hamburger_links';
   info: {
+    description: 'A link shown in the mobile (hamburger) menu.';
     displayName: 'Mobile Nav Link';
+    icon: 'link';
   };
   attributes: {
     text: Schema.Attribute.String;
@@ -115,7 +131,9 @@ export interface StructureHamburgerLinks extends Struct.ComponentSchema {
 export interface StructureJobPostings extends Struct.ComponentSchema {
   collectionName: 'components_structure_job_postings';
   info: {
+    description: 'A heading, intro text and a hand-picked list of job postings.';
     displayName: 'Job Listings Section';
+    icon: 'briefcase';
   };
   attributes: {
     description: Schema.Attribute.Text;
@@ -130,7 +148,9 @@ export interface StructureJobPostings extends Struct.ComponentSchema {
 export interface StructureLink extends Struct.ComponentSchema {
   collectionName: 'components_structure_links';
   info: {
-    displayName: 'link';
+    description: 'A text link to a page or URL.';
+    displayName: 'Link';
+    icon: 'link';
   };
   attributes: {
     text: Schema.Attribute.String;
@@ -141,7 +161,9 @@ export interface StructureLink extends Struct.ComponentSchema {
 export interface StructureMainHeader extends Struct.ComponentSchema {
   collectionName: 'components_structure_main_headers';
   info: {
+    description: 'Top of the homepage: the first article is the big lead story, the rest are listed beside it.';
     displayName: 'Main Header';
+    icon: 'star';
   };
   attributes: {
     blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
@@ -151,7 +173,9 @@ export interface StructureMainHeader extends Struct.ComponentSchema {
 export interface StructureNavbar extends Struct.ComponentSchema {
   collectionName: 'components_structure_navbars';
   info: {
-    displayName: 'navbar';
+    description: 'Site header: logo, main links and the mobile menu links.';
+    displayName: 'Navigation Bar';
+    icon: 'grid';
   };
   attributes: {
     hamburgerLinks: Schema.Attribute.Component<
@@ -166,7 +190,9 @@ export interface StructureNavbar extends Struct.ComponentSchema {
 export interface StructureSocialMediaSection extends Struct.ComponentSchema {
   collectionName: 'components_structure_social_media_sections';
   info: {
+    description: 'Embeds a social post (e.g. LinkedIn) with a title, summary and author.';
     displayName: 'Social Media Section';
+    icon: 'cast';
   };
   attributes: {
     author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
@@ -180,7 +206,9 @@ export interface StructureSocialMediaSection extends Struct.ComponentSchema {
 export interface StructureSocialMedias extends Struct.ComponentSchema {
   collectionName: 'components_structure_social_medias';
   info: {
+    description: 'An icon linking to a social media profile.';
     displayName: 'Social Media Link';
+    icon: 'globe';
   };
   attributes: {
     mediaLink: Schema.Attribute.String;

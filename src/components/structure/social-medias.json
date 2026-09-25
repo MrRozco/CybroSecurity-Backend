@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_social_medias",
   "info": {
-    "displayName": "Social Media Link"
+    "displayName": "Social Media Link",
+    "icon": "globe",
+    "description": "An icon linking to a social media profile."
   },
   "options": {},
   "attributes": {

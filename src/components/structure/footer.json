@@ -1,7 +1,9 @@
 {
   "collectionName": "components_structure_footers",
   "info": {
-    "displayName": "footer"
+    "displayName": "Footer",
+    "icon": "layout",
+    "description": "Site footer: logo, links and social media icons."
   },
   "options": {},
   "attributes": {

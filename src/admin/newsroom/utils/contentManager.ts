@@ -65,5 +65,7 @@ export const cmEditUrl = (uid: ContentTypeUID, documentId: string) =>
 
 export const cmCreateUrl = (uid: ContentTypeUID) => `/content-manager/collection-types/${uid}/create`;
 
+export const cmSingleTypeUrl = (uid: string) => `/content-manager/single-types/${uid}`;
+
 /** Admin API endpoint that backs the Content Manager list view (respects RBAC). */
 export const cmApiUrl = (uid: ContentTypeUID) => `/content-manager/collection-types/${uid}`;
