@@ -87,7 +87,12 @@ const PAGE_FIELDS: Record<string, Record<string, FieldHelp>> = {
 
 const COMPONENT_FIELDS: Record<string, Record<string, FieldHelp>> = {
   'structure.main-header': {
-    blogs: { label: 'Articles', description: 'The first article is the large lead story; the rest are listed beside it.' },
+    mainArticle: { label: 'Main article', description: 'The big story at the top of the homepage.' },
+    sideTitle: { label: 'Sidebar heading', placeholder: 'Top Stories' },
+    sideArticles: {
+      label: 'Side articles',
+      description: 'Listed beside the main article, top to bottom. Drag to reorder. 4–5 works best.',
+    },
   },
   'structure.category-feed': {
     category: { label: 'Category', description: 'The section shows the latest articles from this category.' },
@@ -163,6 +168,29 @@ const COMPONENT_FIELDS: Record<string, Record<string, FieldHelp>> = {
     canonicalURL: { label: 'Canonical URL', description: 'Only needed if this content is also published at another URL.' },
     ogImage: { label: 'Social share image', description: 'Shown when the page is shared on social media.' },
     preventIndexing: { label: 'Hide from search engines' },
+  },
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * One-time layouts
+ * -----------------------------------------------------------------------------------------------*/
+
+/**
+ * Edit-view layouts applied once per version key (tracked in the core store), so
+ * an editor can still rearrange them later via "Configure the view".
+ */
+const ONE_TIME_COMPONENT_LAYOUTS: Record<string, { version: string; hidden: string[]; edit: { name: string; size: number }[][] }> = {
+  'structure.main-header': {
+    version: 'v1',
+    // `blogs` is the legacy "first = main" list; its data is migrated on startup.
+    hidden: ['blogs'],
+    edit: [
+      [{ name: 'mainArticle', size: 6 }],
+      [
+        { name: 'sideTitle', size: 6 },
+        { name: 'sideArticles', size: 6 },
+      ],
+    ],
   },
 };
 
@@ -252,6 +280,26 @@ export const applyContentManagerConfig = async (strapi: Core.Strapi) => {
       await components.updateConfiguration(component, patch);
       updated.push(uid);
     }
+  }
+
+  const store = strapi.store({ type: 'core', name: 'cybro-admin' });
+
+  for (const [uid, layout] of Object.entries(ONE_TIME_COMPONENT_LAYOUTS)) {
+    const component = components.findComponent(uid);
+    const flagKey = `layout:${uid}:${layout.version}`;
+    if (!component || (await store.get({ key: flagKey }))) continue;
+
+    const { metadatas } = await components.findConfiguration(component);
+    const nextMetadatas: Metadatas = { ...metadatas };
+    for (const field of layout.hidden) {
+      if (nextMetadatas[field]?.edit) {
+        nextMetadatas[field] = { ...nextMetadatas[field], edit: { ...nextMetadatas[field].edit, visible: false } };
+      }
+    }
+
+    await components.updateConfiguration(component, { metadatas: nextMetadatas, layouts: { edit: layout.edit } });
+    await store.set({ key: flagKey, value: new Date().toISOString() });
+    updated.push(`${uid} (layout ${layout.version})`);
   }
 
   if (updated.length) {

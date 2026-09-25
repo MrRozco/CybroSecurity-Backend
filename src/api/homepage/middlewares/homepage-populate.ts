@@ -1,5 +1,15 @@
 import type { Core } from '@strapi/strapi';
 
+/** Everything an article card in the Main Header needs. */
+const headerArticle = {
+  fields: ['Title', 'Slug', 'Excerpt'],
+  populate: {
+    FeaturedImage: { fields: ['url', 'alternativeText', 'formats'] },
+    author: { fields: ['Name'] },
+    category: { fields: ['Name', 'Slug'] },
+  },
+};
+
 const populate = {
   seo: {
     populate: {
@@ -10,14 +20,10 @@ const populate = {
     on: {
       'structure.main-header': {
         populate: {
-          blogs: {
-            fields: ['Title', 'Slug', 'Excerpt'],
-            populate: {
-              FeaturedImage: { fields: ['url', 'alternativeText', 'formats'] },
-              author: { fields: ['Name'] },
-              category: { fields: ['Name', 'Slug'] },
-            },
-          },
+          mainArticle: headerArticle,
+          sideArticles: headerArticle,
+          // Legacy list (first = main). Kept so older data still renders until migrated.
+          blogs: headerArticle,
         },
       },
       'structure.category-feed': {

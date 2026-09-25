@@ -30,7 +30,14 @@ const countOf = (value: unknown): number | null => {
 const FIELD_NAMES: Record<string, string> = {
   blogs: 'articles',
   topBlogs: 'sidebar articles',
+  mainArticle: 'main article',
+  sideArticles: 'side articles',
   job_postings: 'job postings',
+};
+
+/** Hidden legacy fields that shouldn't appear in outlines (e.g. Main Header's old `blogs` list). */
+const LEGACY_FIELDS: Record<string, string[]> = {
+  'structure.main-header': ['blogs'],
 };
 
 const humanize = (key: string) =>
@@ -48,14 +55,18 @@ const summarize = (block: Data): string[] => {
   const title = TITLE_KEYS.map((key) => block[key]).find((value) => typeof value === 'string' && value.trim());
   if (title) facts.push(`“${title}”`);
 
+  const skip = ['id', '__component', ...TITLE_KEYS, ...(LEGACY_FIELDS[block.__component] ?? [])];
+
   for (const [key, value] of Object.entries(block)) {
-    if (['id', '__component', ...TITLE_KEYS].includes(key) || value == null) continue;
+    if (skip.includes(key) || value == null) continue;
 
     const count = countOf(value);
-    if (count !== null) {
+    const name = typeof value === 'object' && !Array.isArray(value) ? (value.Name ?? value.name ?? value.Title) : undefined;
+
+    if (name) {
+      facts.push(`${humanize(key)}: ${name}`);
+    } else if (count !== null) {
       facts.push(`${count} ${humanize(key)}`);
-    } else if (typeof value === 'object' && (value.Name || value.name)) {
-      facts.push(`${humanize(key)}: ${value.Name ?? value.name}`);
     }
   }
 

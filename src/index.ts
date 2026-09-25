@@ -1,6 +1,7 @@
 import type { Core } from '@strapi/strapi';
 
 import { applyContentManagerConfig } from './bootstrap/content-manager';
+import { migrateMainHeaderArticles } from './bootstrap/migrate-main-header';
 
 export default {
   /**
@@ -19,6 +20,9 @@ export default {
    * run jobs, or perform some special logic.
    */
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
+    // Data migrations first — let failures surface, they matter for what the site shows.
+    await migrateMainHeaderArticles(strapi);
+
     try {
       await applyContentManagerConfig(strapi);
     } catch (error) {
